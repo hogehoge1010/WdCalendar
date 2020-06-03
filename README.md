@@ -9,6 +9,7 @@ BROWSERS SUPPORTED
 FireFox2.0+ IE6+ Opera9+ Safari3+ Chrome
 
 WHATS NEW
+
 convert mysqli to PDO
 
 WHY SHOULD YOU DOWNLOAD

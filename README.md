@@ -9,16 +9,14 @@ BROWSERS SUPPORTED
 FireFox2.0+ IE6+ Opera9+ Safari3+ Chrome
 
 WHATS NEW
-
-Current WdCalendar code has mysqli connections , hence has no problem with lower PHP versions and some jquery bugs has been fixed.
+convert mysqli to PDO
 
 WHY SHOULD YOU DOWNLOAD
 
-It is ready made wdcalendar package. you just need to extract in apache www directory/sub-directory and open sample.php file.
+It is ready made wdcalendar package. you just need to extract in apache www directory/sub-directory and open index.php file.
 You also need to change your database connections in php/dbconfig.php.
 
 NO NEED TO RENAME ANYTHING IT IS FULLY FUNCTIONAL.
 
 NOTE: I have removed bugs which I encountered during development. Please let me know for improvements.
 
-**********************************************ODE TO Technology**************************************************

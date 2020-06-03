@@ -1,24 +1,22 @@
 <?php
-class DBConnection{
-	
-	public $servername 	= "localhost";
-	public $username 	= "root";
-	public $password 	= "root";
-	public $database 	= 'wdcalendar';
-	public $dbcon;
-	
-	public function __construct()
-	{
-        $this->dbcon = mysqli_connect($this->servername, $this->username, $this->password, $this->database);
-		if (mysqli_connect_errno())
-		{
-		  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+class DBConnection {
+
+	public $username	= "wdcalendar";
+	public $password	= "Pasuwa-do";
+	public $dsn			= 'mysql:dbname=wdcalendar;host=localhost';
+	public $dbh;
+
+	public function __construct() {
+		try {
+			$this->dbh = new PDO($this->dsn, $this->username, $this->password, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+		} catch (PDOException $e) {
+			echo "Failed to connect : " . $e->getMessage();
+			exit();
 		}
 	}
-	public function get_connection()
-	{
-		return $this->dbcon;
+
+	public function getDBHandle() {
+		return $this->dbh;
 	}
-	
 }
 ?>

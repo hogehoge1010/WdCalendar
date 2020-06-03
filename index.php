@@ -7,25 +7,25 @@ error_reporting(0);
     <title>	My Calendar </title>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <link href="css/dailog.css" rel="stylesheet" type="text/css" />
-    <link href="css/calendar.css" rel="stylesheet" type="text/css" /> 
-    <link href="css/dp.css" rel="stylesheet" type="text/css" />   
-    <link href="css/alert.css" rel="stylesheet" type="text/css" /> 
-    <link href="css/main.css" rel="stylesheet" type="text/css" /> 
-    <script src="src/jquery.js" type="text/javascript"></script>  
-    
-    <script src="src/Plugins/Common.js" type="text/javascript"></script>    
-    <script src="src/Plugins/datepicker_lang_US.js" type="text/javascript"></script>     
+    <link href="css/calendar.css" rel="stylesheet" type="text/css" />
+    <link href="css/dp.css" rel="stylesheet" type="text/css" />
+    <link href="css/alert.css" rel="stylesheet" type="text/css" />
+    <link href="css/main.css" rel="stylesheet" type="text/css" />
+    <script src="src/jquery.js" type="text/javascript"></script>
+
+    <script src="src/Plugins/Common.js" type="text/javascript"></script>
+    <script src="src/Plugins/datepicker_lang_US.js" type="text/javascript"></script>
     <script src="src/Plugins/jquery.datepicker.js" type="text/javascript"></script>
 
-    <script src="src/Plugins/jquery.alert.js" type="text/javascript"></script>    
+    <script src="src/Plugins/jquery.alert.js" type="text/javascript"></script>
     <script src="src/Plugins/jquery.ifrmdailog.js" defer="defer" type="text/javascript"></script>
-    <script src="src/Plugins/wdCalendar_lang_US.js" type="text/javascript"></script>    
-    <script src="src/Plugins/jquery.calendar.js" type="text/javascript"></script>   
-    
+    <script src="src/Plugins/wdCalendar_lang_US.js" type="text/javascript"></script>
+    <script src="src/Plugins/jquery.calendar.js" type="text/javascript"></script>
+
     <script type="text/javascript">
-        $(document).ready(function() {     
-           var view="month";          
-           
+        $(document).ready(function() {
+           var view="month";
+
             var DATA_FEED_URL = "php/datafeed.php";
             var op = {
                 view: view,
@@ -33,16 +33,16 @@ error_reporting(0);
                 showday: new Date(),
                 EditCmdhandler:Edit,
                 DeleteCmdhandler:Delete,
-                ViewCmdhandler:View,    
+                ViewCmdhandler:View,
                 onWeekOrMonthToDay:wtd,
                 onBeforeRequestData: cal_beforerequest,
                 onAfterRequestData: cal_afterrequest,
-                onRequestDataError: cal_onerror, 
+                onRequestDataError: cal_onerror,
                 autoload:true,
-                url: DATA_FEED_URL + "?method=list",  
-                quickAddUrl: DATA_FEED_URL + "?method=add", 
+                url: DATA_FEED_URL + "?method=list",
+                quickAddUrl: DATA_FEED_URL + "?method=add",
                 quickUpdateUrl: DATA_FEED_URL + "?method=update",
-                quickDeleteUrl: DATA_FEED_URL + "?method=remove"        
+                quickDeleteUrl: DATA_FEED_URL + "?method=remove"
             };
             var $dv = $("#calhead");
             var _MH = document.documentElement.clientHeight;
@@ -55,14 +55,14 @@ error_reporting(0);
                 $("#txtdatetimeshow").text(p.datestrshow);
             }
             $("#caltoolbar").noSelect();
-            
-            $("#hdtxtshow").datepicker({ picker: "#txtdatetimeshow", showtarget: $("#txtdatetimeshow"),onReturn:function(r){                          
+
+            $("#hdtxtshow").datepicker({ picker: "#txtdatetimeshow", showtarget: $("#txtdatetimeshow"),onReturn:function(r){
                 var p = $("#gridcontainer").gotoDate(r).BcalGetOp();
                 if (p && p.datestrshow) {
                     $("#txtdatetimeshow").text(p.datestrshow);
                     $("#gridcontainer").reload();
                 }
-            } 
+            }
             });
             function cal_beforerequest(type)
             {
@@ -72,14 +72,14 @@ error_reporting(0);
                     case 1:
                         t="Loading data...";
                         break;
-                    case 2:                      
-                    case 3:  
-                    case 4:    
-                        t="The request is being processed ...";                                   
+                    case 2:
+                    case 3:
+                    case 4:
+                        t="The request is being processed ...";
                         break;
                 }
                 $("#errorpannel").hide();
-                $("#loadingpannel").html(t).show();    
+                $("#loadingpannel").html(t).show();
             }
             function cal_afterrequest(type)
             {
@@ -94,8 +94,8 @@ error_reporting(0);
                         $("#loadingpannel").html("Success!");
                         window.setTimeout(function(){ $("#loadingpannel").hide();},2000);
                     break;
-                }              
-               
+                }
+
             }
             function cal_onerror(type,data)
             {
@@ -103,7 +103,7 @@ error_reporting(0);
             }
             function Edit(data)
             {
-               var eurl="edit.php?id={0}&start={2}&end={3}&isallday={4}&title={1}";   
+               var eurl="edit.php?id={0}&start={2}&end={3}&isallday={4}&title={1}";
                 if(data)
                 {
                     var url = StrFormat(eurl,data);
@@ -111,21 +111,21 @@ error_reporting(0);
                        $("#gridcontainer").reload();
                     }});
                 }
-            }    
+            }
             function View(data)
             {
                 var str = "";
                 $.each(data, function(i, item){
                     str += "[" + i + "]: " + item + "\n";
                 });
-                alert(str);               
-            }    
+                alert(str);
+            }
             function Delete(data,callback)
-            {           
-                
-                $.alerts.okButton="Ok";  
-                $.alerts.cancelButton="Cancel";  
-                hiConfirm("Are You Sure to Delete this Event", 'Confirm',function(r){ r && callback(0);});           
+            {
+
+                $.alerts.okButton="Ok";
+                $.alerts.cancelButton="Cancel";
+                hiConfirm("Are You Sure to Delete this Event", 'Confirm',function(r){ r && callback(0);});
             }
             function wtd(p)
             {
@@ -174,11 +174,11 @@ error_reporting(0);
                     $("#txtdatetimeshow").text(p.datestrshow);
                 }
             });
-            
+
             $("#showreflashbtn").click(function(e){
                 $("#gridcontainer").reload();
             });
-            
+
             //Add a new event
             $("#faddbtn").click(function(e) {
                 var url ="edit.php";
@@ -213,19 +213,19 @@ error_reporting(0);
                     $("#gridcontainer").reload();
                 }
             });
-            
+
         });
-    </script>    
+    </script>
 </head>
 <body>
     <div>
 
-      <div id="calhead" style="padding-left:1px;padding-right:1px;">          
+      <div id="calhead" style="padding-left:1px;padding-right:1px;">
             <div class="cHead"><div class="ftitle">My Calendar</div>
             <div id="loadingpannel" class="ptogtitle loadicon" style="display: none;">Loading data...</div>
              <div id="errorpannel" class="ptogtitle loaderror" style="display: none;">Sorry, could not load your data, please try again later</div>
-            </div>          
-            
+            </div>
+
             <div id="caltoolbar" class="ctoolbar">
               <div id="faddbtn" class="fbutton">
                 <div><span title='Click to Create New Event' class="addcal">
@@ -269,7 +269,7 @@ error_reporting(0);
 
                     </div>
             </div>
-            
+
             <div class="clear"></div>
             </div>
       </div>
@@ -288,10 +288,10 @@ error_reporting(0);
             &nbsp;</div>
         <div class="t1 chromeColor">
             &nbsp;
-        </div>   
         </div>
-     
+        </div>
+
   </div>
-    
+
 </body>
 </html>

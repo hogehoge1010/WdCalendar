@@ -36,14 +36,7 @@ CREATE TABLE `jqcalendar` (
   `IsAllDayEvent` smallint(6) NOT NULL,
   `Color` varchar(200) CHARACTER SET utf8 DEFAULT NULL,
   `RecurringRule` varchar(500) CHARACTER SET utf8 DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `jqcalendar`
---
-
-INSERT INTO `jqcalendar` (`Id`, `Subject`, `Location`, `Description`, `StartTime`, `EndTime`, `IsAllDayEvent`, `Color`, `RecurringRule`) VALUES
-(1, 'Test', NULL, NULL, '2016-08-13 00:00:00', '2016-08-13 00:00:00', 1, NULL, NULL);
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8;
 
 --
 -- Indexes for dumped tables

@@ -11,7 +11,9 @@ FireFox2.0+ IE6+ Opera9+ Safari3+ Chrome
 WHATS NEW
 
 mysqliをPDOに変更
+
 SQLInjection対策
+
 日本語対応
 
 WHY SHOULD YOU DOWNLOAD

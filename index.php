@@ -107,7 +107,7 @@ error_reporting(0);
                 if(data)
                 {
                     var url = StrFormat(eurl,data);
-                    OpenModelWindow(url,{ width: 600, height: 400, caption:"Manage  The Calendar",onclose:function(){
+                    OpenModelWindow(url,{ width: 600, height: 400, caption:"予定の編集",onclose:function(){
                        $("#gridcontainer").reload();
                     }});
                 }

@@ -152,7 +152,7 @@
              * @description {Config} weekstartday  
              * {Number} First day of week 0 for Sun, 1 for Mon, 2 for Tue.
              */
-            weekstartday: 1,  //start from Monday by default
+            weekstartday: 0,  //start from Monday by default
             theme: 0, //theme no
             /**
              * @description {Config} height  

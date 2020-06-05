@@ -3,7 +3,7 @@ class DBConnection {
 
 	public $username	= "wdcalendar";
 	public $password	= "Pasuwa-do";
-	public $dsn			= 'mysql:dbname=wdcalendar;host=localhost';
+	public $dsn			= 'mysql:dbname=wdcalendar;host=localhost;charset=utf8;';
 	public $dbh;
 
 	public function __construct() {

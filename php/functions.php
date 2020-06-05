@@ -1,8 +1,23 @@
 <?php
+//function js2PhpTime($jsdate){
+//  if(preg_match('@(\d+)/(\d+)/(\d+)\s+(\d+):(\d+)@', $jsdate, $matches)==1){
+//    $ret = mktime($matches[4], $matches[5], 0, $matches[1], $matches[2], $matches[3]);
+//    //echo $matches[4] ."-". $matches[5] ."-". 0  ."-". $matches[1] ."-". $matches[2] ."-". $matches[3];
+//  }else if(preg_match('@(\d+)/(\d+)/(\d+)@', $jsdate, $matches)==1){
+//    $ret = mktime(0, 0, 0, $matches[1], $matches[2], $matches[3]);
+//    //echo 0 ."-". 0 ."-". 0 ."-". $matches[1] ."-". $matches[2] ."-". $matches[3];
+//  }
+//  return $ret;
+//}
 function js2PhpTime($jsdate){
-  if(preg_match('@(\d+)/(\d+)/(\d+)\s+(\d+):(\d+)@', $jsdate, $matches)==1){
+ 
+  if(preg_match('@(\d{4})/(\d+)/(\d+)\s+(\d+):(\d+)@', $jsdate, $matches)==1){
+    $ret = mktime($matches[4], $matches[5], 0, $matches[2], $matches[3], $matches[1]);
+  }else if(preg_match('@(\d+)/(\d+)/(\d+)\s+(\d+):(\d+)@', $jsdate, $matches)==1){
     $ret = mktime($matches[4], $matches[5], 0, $matches[1], $matches[2], $matches[3]);
     //echo $matches[4] ."-". $matches[5] ."-". 0  ."-". $matches[1] ."-". $matches[2] ."-". $matches[3];
+  }else if(preg_match('@(\d{4})/(\d+)/(\d+)@', $jsdate, $matches)==1){
+    $ret = mktime(0, 0, 0, $matches[2], $matches[3], $matches[1]);
   }else if(preg_match('@(\d+)/(\d+)/(\d+)@', $jsdate, $matches)==1){
     $ret = mktime(0, 0, 0, $matches[1], $matches[2], $matches[3]);
     //echo 0 ."-". 0 ."-". 0 ."-". $matches[1] ."-". $matches[2] ."-". $matches[3];
@@ -13,7 +28,8 @@ function js2PhpTime($jsdate){
 function php2JsTime($phpDate){
     //echo $phpDate;
     //return "/Date(" . $phpDate*1000 . ")/";
-    return date("m/d/Y H:i", $phpDate);
+    //return date("m/d/Y H:i", $phpDate);
+    return date("Y/m/d H:i", $phpDate);
 }
 
 function php2MySqlTime($phpDate){

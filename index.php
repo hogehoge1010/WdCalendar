@@ -14,12 +14,12 @@ error_reporting(0);
     <script src="src/jquery.js" type="text/javascript"></script>
 
     <script src="src/Plugins/Common.js" type="text/javascript"></script>
-    <script src="src/Plugins/datepicker_lang_US.js" type="text/javascript"></script>
+    <script src="src/Plugins/datepicker_lang_JA.js" type="text/javascript"></script>
     <script src="src/Plugins/jquery.datepicker.js" type="text/javascript"></script>
 
     <script src="src/Plugins/jquery.alert.js" type="text/javascript"></script>
     <script src="src/Plugins/jquery.ifrmdailog.js" defer="defer" type="text/javascript"></script>
-    <script src="src/Plugins/wdCalendar_lang_US.js" type="text/javascript"></script>
+    <script src="src/Plugins/wdCalendar_lang_JA.js" type="text/javascript"></script>
     <script src="src/Plugins/jquery.calendar.js" type="text/javascript"></script>
 
     <script type="text/javascript">
@@ -66,16 +66,16 @@ error_reporting(0);
             });
             function cal_beforerequest(type)
             {
-                var t="Loading data...";
+                var t="更新中...";
                 switch(type)
                 {
                     case 1:
-                        t="Loading data...";
+                        t="更新中...";
                         break;
                     case 2:
                     case 3:
                     case 4:
-                        t="The request is being processed ...";
+                        t="リクエスト処理中...";
                         break;
                 }
                 $("#errorpannel").hide();
@@ -91,7 +91,7 @@ error_reporting(0);
                     case 2:
                     case 3:
                     case 4:
-                        $("#loadingpannel").html("Success!");
+                        $("#loadingpannel").html("予定の更新が完了しました。");
                         window.setTimeout(function(){ $("#loadingpannel").hide();},2000);
                     break;
                 }
@@ -125,7 +125,7 @@ error_reporting(0);
 
                 $.alerts.okButton="Ok";
                 $.alerts.cancelButton="Cancel";
-                hiConfirm("Are You Sure to Delete this Event", 'Confirm',function(r){ r && callback(0);});
+                hiConfirm("この予定を削除しますか？", 'Confirm',function(r){ r && callback(0);});
             }
             function wtd(p)
             {
@@ -182,7 +182,7 @@ error_reporting(0);
             //Add a new event
             $("#faddbtn").click(function(e) {
                 var url ="edit.php";
-                OpenModelWindow(url,{ width: 500, height: 400, caption: "Create New Calendar",onclose:function(){
+                OpenModelWindow(url,{ width: 500, height: 400, caption: "新規予定",onclose:function(){
                        $("#gridcontainer").reload();
                     }});
             });
@@ -228,38 +228,38 @@ error_reporting(0);
 
             <div id="caltoolbar" class="ctoolbar">
               <div id="faddbtn" class="fbutton">
-                <div><span title='Click to Create New Event' class="addcal">
+                <div><span title='予定を新規作成する' class="addcal">
 
-                New Event                
+                新規予定                
                 </span></div>
             </div>
             <div class="btnseparator"></div>
              <div id="showtodaybtn" class="fbutton">
-                <div><span title='Click to back to today ' class="showtoday">
-                Today</span></div>
+                <div><span title='今日' class="showtoday">
+                今日</span></div>
             </div>
               <div class="btnseparator"></div>
 
             <div id="showdaybtn" class="fbutton">
-                <div><span title='Day' class="showdayview">Day</span></div>
+                <div><span title='日' class="showdayview">日</span></div>
             </div>
               <div  id="showweekbtn" class="fbutton">
-                <div><span title='Week' class="showweekview">Week</span></div>
+                <div><span title='週' class="showweekview">週</span></div>
             </div>
               <div  id="showmonthbtn" class="fbutton fcurrent">
-                <div><span title='Month' class="showmonthview">Month</span></div>
+                <div><span title='月' class="showmonthview">月</span></div>
 
             </div>
             <div class="btnseparator"></div>
               <div  id="showreflashbtn" class="fbutton">
-                <div><span title='Refresh view' class="showdayflash">Refresh</span></div>
+                <div><span title='更新' class="showdayflash">更新</span></div>
                 </div>
              <div class="btnseparator"></div>
-            <div id="sfprevbtn" title="Prev"  class="fbutton">
+            <div id="sfprevbtn" title="前"  class="fbutton">
               <span class="fprev"></span>
 
             </div>
-            <div id="sfnextbtn" title="Next" class="fbutton">
+            <div id="sfnextbtn" title="次" class="fbutton">
                 <span class="fnext"></span>
             </div>
             <div class="fshowdatep fbutton">

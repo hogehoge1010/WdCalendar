@@ -21,7 +21,7 @@ function addCalendar($st, $et, $sub, $ade)
 		$prepare->execute();
 
 		$ret['IsSuccess'] = true;
-		$ret['Msg'] = 'add success';
+		$ret['Msg'] = '作成しました。';
 		$ret['Data'] = $dbh->lastInsertId('id');
 
 		$dbh->commit();
@@ -57,7 +57,7 @@ function addDetailedCalendar($st, $et, $sub, $ade, $dscr, $loc, $color, $tz)
 		$prepare->execute();
 
 		$ret['IsSuccess'] = true;
-		$ret['Msg'] = 'add success';
+		$ret['Msg'] = '作成しました。';
 		$ret['Data'] = $dbh->lastInsertId('id');
 
 		$dbh->commit();
@@ -156,7 +156,7 @@ function updateCalendar($id, $st, $et)
 		$prepare->execute();
 
 		$ret['IsSuccess'] = true;
-		$ret['Msg'] = 'Succefully';
+		$ret['Msg'] = '更新しました';
 		$dbh->commit();
 	} catch (Exception $e) {
 		$dbh->rollback();
@@ -197,7 +197,7 @@ function updateDetailedCalendar($id, $st, $et, $sub, $ade, $dscr, $loc, $color, 
 		$prepare->execute();
 
 		$ret['IsSuccess'] = true;
-		$ret['Msg'] = 'Succefully';
+		$ret['Msg'] = '更新しました';
 		$dbh->commit();
 	} catch (Exception $e) {
 		$dbh->rollback();
@@ -223,7 +223,7 @@ function removeCalendar($id)
 		$prepare->execute();
 
 		$ret['IsSuccess'] = true;
-		$ret['Msg'] = 'Succefully';
+		$ret['Msg'] = '削除しました';
 		$dbh->commit();
 	} catch (Exception $e) {
 		$dbh->rollback();
@@ -251,7 +251,7 @@ switch ($method) {
 	case "adddetails":
 		$st = $_POST["stpartdate"] . " " . $_POST["stparttime"];
 		$et = $_POST["etpartdate"] . " " . $_POST["etparttime"];
-		if (isset($_GET["id"])) {
+		if (isset($_GET["id"]) && $_GET["id"] > 0) {
 			$ret = updateDetailedCalendar(
 				$_GET["id"],
 				$st,
